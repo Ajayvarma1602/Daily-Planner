@@ -15,15 +15,6 @@ This planner was built to structure a focused 31-day job search for **Full Stack
 ### Daily Planner
 A 31-day calendar view starting from when you first open the app. Click any day to open a detailed schedule.
 
-**Weekday schedule (Mon–Fri):**
-| Time | Activity |
-|------|----------|
-| 5:30 – 7:00 AM | Morning Study — Java, React, SQL, Behavioural, Project review |
-| 7:00 – 11:30 AM | Job Search Round 1 — LinkedIn, Dice C2C, Dice W2 |
-| 1:00 – 2:00 PM | Full-Time Applications — LinkedIn / Indeed / Glassdoor |
-| 2:00 – 4:30 PM | Job Search Round 2 — LinkedIn, Dice C2C, Dice W2 |
-| 6:00 – 7:00 PM | Evening — Log responses & plan follow-ups |
-| 8:00 – 10:30 PM | DSA + LeetCode |
 
 **Saturday:** Project building tasks (plan, code, push to GitHub, write summary)
 
@@ -96,15 +87,10 @@ Contacts added from the Follow-Up Tracker appear here automatically.
 
 ## How to Run
 
-### Option 1 — Double-click (macOS)
-Double-click `Open Planner.command` in the project folder. The planner opens instantly in your default browser.
-
-> First time only: right-click → Open if macOS blocks the `.command` file.
-
-### Option 2 — Manual open
+### Option 1 — Manual open
 Open `frontend/build/index.html` directly in any browser.
 
-### Option 3 — Development mode
+### Option 2 — Development mode
 ```bash
 cd frontend
 npm install
