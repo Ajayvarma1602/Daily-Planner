@@ -3,17 +3,17 @@ import MonthView from './components/MonthView';
 import DayModal from './components/DayModal';
 import InterviewTracker from './components/InterviewTracker';
 import ContactBook from './components/ContactBook';
-import { getAllData, getPlannerStart } from './storage';
+import { getAllData } from './storage';
 import './App.css';
 
-// Generate 31 days from the fixed planner start date (stored in localStorage)
-const generateDays = () => {
-  const start = getPlannerStart();
+// Generate all days from a start date through end of its year
+const generateDaysFrom = (startDate) => {
   const days = [];
-  for (let i = 0; i < 31; i++) {
-    const d = new Date(start);
-    d.setDate(start.getDate() + i);
-    days.push(d);
+  const end = new Date(startDate.getFullYear(), 11, 31);
+  const d = new Date(startDate);
+  while (d <= end) {
+    days.push(new Date(d));
+    d.setDate(d.getDate() + 1);
   }
   return days;
 };
@@ -25,8 +25,17 @@ export const formatDate = (date) => {
   return `${y}-${m}-${d}`;
 };
 
+const PLAN_START = new Date('2026-03-31');
+const PLAN_YEAR = PLAN_START.getFullYear();
+const ALL_DAYS = generateDaysFrom(PLAN_START);
+
 function App() {
-  const [days] = useState(generateDays());
+  const today = new Date();
+  const defaultMonth = today.getFullYear() === PLAN_YEAR && today >= PLAN_START
+    ? today.getMonth()
+    : PLAN_START.getMonth();
+
+  const [viewMonth, setViewMonth] = useState(defaultMonth);
   const [selectedDate, setSelectedDate] = useState(null);
   const [allData, setAllData] = useState(() => getAllData());
   const [activeTab, setActiveTab] = useState('planner');
@@ -36,17 +45,26 @@ function App() {
   const handleDayClick = (date) => setSelectedDate(date);
   const handleClose = () => { setSelectedDate(null); refreshData(); };
 
+  const monthDays = ALL_DAYS.filter(d => d.getMonth() === viewMonth);
+
+  const prevMonth = () => setViewMonth(m => Math.max(PLAN_START.getMonth(), m - 1));
+  const nextMonth = () => setViewMonth(m => Math.min(11, m + 1));
+
   return (
     <div className="app">
       <header className="app-header">
         <div className="header-content">
           <h1>Job Hunt Planner</h1>
-          <p className="subtitle">31-Day Daily Tracker — Full Stack & Software Engineer Roles</p>
+          <p className="subtitle">{PLAN_YEAR} Year-Long Tracker — Full Stack & Software Engineer Roles</p>
           <div className="header-meta">
-            <span className="badge weekday-badge">Mon–Fri: Study + Apply</span>
-            <span className="badge saturday-badge">Sat: Build Projects</span>
-            <span className="badge sunday-badge">Sun: Revision</span>
-            <span className="badge dsa-badge">Alt Days: DSA + LeetCode</span>
+            <span className="badge weekday-badge">Mon: Backend</span>
+            <span className="badge weekday-badge" style={{background:'#10b981'}}>Tue: Frontend</span>
+            <span className="badge weekday-badge" style={{background:'#f59e0b',color:'#0f172a'}}>Wed: Database</span>
+            <span className="badge weekday-badge" style={{background:'#0ea5e9',color:'#0f172a'}}>Thu: System Design</span>
+            <span className="badge weekday-badge" style={{background:'#f97316',color:'#0f172a'}}>Fri: DevOps</span>
+            <span className="badge saturday-badge">Sat: AI Projects ★</span>
+            <span className="badge sunday-badge">Sun: AI Study + Revision</span>
+            <span className="badge dsa-badge">Alt Days: DSA</span>
           </div>
         </div>
       </header>
@@ -74,7 +92,15 @@ function App() {
 
       {activeTab === 'planner' && (
         <>
-          <MonthView days={days} allData={allData} onDayClick={handleDayClick} />
+          <MonthView
+            days={monthDays}
+            allData={allData}
+            onDayClick={handleDayClick}
+            viewMonth={viewMonth}
+            viewYear={PLAN_YEAR}
+            onPrevMonth={prevMonth}
+            onNextMonth={nextMonth}
+          />
           {selectedDate && (
             <DayModal
               date={selectedDate}
