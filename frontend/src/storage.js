@@ -113,10 +113,8 @@ const KEY_START = 'job-planner-start';
 export const getPlannerStart = () => {
   const stored = localStorage.getItem(KEY_START);
   if (stored) return new Date(stored);
-  // First open: anchor to tomorrow
-  const start = new Date();
-  start.setDate(start.getDate() + 1);
-  start.setHours(0, 0, 0, 0);
+  // Anchor to Mar 31 2026 — planner start date
+  const start = new Date('2026-03-31T00:00:00');
   localStorage.setItem(KEY_START, start.toISOString());
   return start;
 };
