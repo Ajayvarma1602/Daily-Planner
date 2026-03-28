@@ -70,14 +70,71 @@ body {
   padding: 20px;
 }
 
+.month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.month-nav-btn {
+  background: #334155;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.6rem;
+  line-height: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.month-nav-btn:hover:not(:disabled) {
+  background: #4f46e5;
+  color: #fff;
+}
+
+.month-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
 .month-title {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: #94a3b8;
-  margin-bottom: 16px;
+  color: #e2e8f0;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  flex: 1;
+}
+
+.month-progress-bar {
+  position: relative;
+  height: 6px;
+  background: #334155;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  overflow: visible;
+}
+
+.month-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4f46e5, #a855f7);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.month-progress-label {
+  position: absolute;
+  right: 0;
+  top: -20px;
+  font-size: 0.72rem;
+  color: #64748b;
 }
 
 .weekday-headers {
@@ -566,6 +623,156 @@ body {
 
 .tracker-title { font-size: 1.3rem; font-weight: 700; color: #f1f5f9; }
 .tracker-subtitle { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
+
+.tracker-stats { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.stat-chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.today-chip  { background: #3b82f622; color: #60a5fa; border: 1px solid #3b82f644; }
+.week-chip   { background: #8b5cf622; color: #a78bfa; border: 1px solid #8b5cf644; }
+.total-chip  { background: #33415522; color: #94a3b8;  border: 1px solid #33415544; }
+
+/* ─── Toolbar ─────────────────────────────────────────────────────────────────── */
+.tracker-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.view-toggle {
+  display: flex;
+  background: #1e293b;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+.view-btn {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: #64748b;
+  transition: background 0.15s, color 0.15s;
+}
+.view-btn.active { background: #334155; color: #e2e8f0; }
+.view-btn:hover:not(.active) { color: #94a3b8; }
+
+.toolbar-filters { display: flex; align-items: center; gap: 8px; flex: 1; flex-wrap: wrap; }
+
+.search-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 7px 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 0.84rem;
+}
+.search-input:focus { outline: none; border-color: #3b82f6; }
+
+.date-filter { width: 150px; font-size: 0.84rem; padding: 7px 10px; }
+
+.clear-filter-btn {
+  padding: 6px 12px;
+  background: #334155;
+  border: none;
+  border-radius: 6px;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.clear-filter-btn:hover { background: #475569; color: #e2e8f0; }
+
+/* ─── Daily Log View ─────────────────────────────────────────────────────────── */
+.daily-log { display: flex; flex-direction: column; gap: 20px; }
+
+.empty-state {
+  text-align: center;
+  color: #475569;
+  padding: 48px 0;
+  font-size: 0.9rem;
+}
+
+.daily-log-group { display: flex; flex-direction: column; gap: 8px; }
+
+.daily-log-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #1e293b;
+}
+.daily-log-date  { font-size: 0.95rem; font-weight: 700; color: #e2e8f0; }
+.daily-log-count { font-size: 0.75rem; color: #64748b; background: #1e293b; padding: 2px 8px; border-radius: 10px; }
+.daily-log-raw   { font-size: 0.72rem; color: #334155; margin-left: auto; }
+
+.daily-log-cards { display: flex; flex-direction: column; gap: 6px; }
+
+.log-card {
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.12s;
+}
+.log-card:hover { border-color: #475569; }
+
+.log-card-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.log-card-info { display: flex; flex-direction: column; gap: 2px; }
+.log-company   { font-size: 0.95rem; font-weight: 700; color: #f1f5f9; }
+.log-role      { font-size: 0.82rem; color: #94a3b8; }
+
+.log-card-badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+.source-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+.source-badge.sm { font-size: 0.68rem; }
+
+.stage-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.log-notes {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-style: italic;
+  padding-left: 2px;
+}
+
+.log-card-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
 
 .add-btn {
   padding: 10px 20px;
