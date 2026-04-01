@@ -25,7 +25,7 @@ export const formatDate = (date) => {
   return `${y}-${m}-${d}`;
 };
 
-const PLAN_START = new Date('2026-03-31');
+const PLAN_START = new Date('2026-04-02');
 const PLAN_YEAR = PLAN_START.getFullYear();
 const ALL_DAYS = generateDaysFrom(PLAN_START);
 
