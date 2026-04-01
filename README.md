@@ -37,42 +37,7 @@ Each weekday focuses on a different full stack topic:
 
 ---
 
-### Weekday Job Search (7:00 AM – 7:00 PM)
 
-- **7:00 – 11:30 AM** — LinkedIn, Dice C2C, Dice W2 (Round 1)
-- **1:00 – 2:00 PM** — Full-Time applications (LinkedIn / Indeed / Glassdoor)
-- **2:00 – 4:30 PM** — LinkedIn, Dice C2C, Dice W2 (Round 2)
-- **6:00 – 7:00 PM** — Log responses, update Interview Tracker, plan follow-ups
-
----
-
-### Weekend — AI Project Build (Primary Priority)
-
-Weekends are dedicated to building **AI-powered full stack projects** using your existing Java/Spring Boot + React + PostgreSQL stack.
-
-**Saturday — AI Project Build Day**
-
-| Time | Task |
-|------|------|
-| 8:00 – 9:30 AM | Read official docs for this week's AI project |
-| 10:00 – 10:30 AM | Set up repo, install deps, configure API keys |
-| 10:30 AM – 1:00 PM | Build core AI feature (Spring AI chain / RAG / LLM integration) |
-| 1:00 – 2:30 PM | Add React UI + Spring Boot REST endpoint |
-| 2:30 – 3:30 PM | Test AI responses, refine prompts, fix edge cases |
-| 3:30 – 4:00 PM | Push to GitHub — README + demo screenshots + LinkedIn update |
-| 4:30 – 5:30 PM | *(Secondary)* Full stack integration polish |
-| 6:00 PM+ | DSA practice |
-
-**Sunday — AI Study + Light Revision**
-
-| Time | Task |
-|------|------|
-| 9:00 – 10:30 AM | Deep-dive AI concept + read AI news/papers |
-| 10:30 AM – 12:30 PM | Continue/improve Saturday's project + deploy |
-| 12:30 – 2:30 PM | *(Secondary)* Compressed full stack revision + behavioral |
-| 3:00 PM+ | DSA practice |
-
----
 
 ### 12 AI Projects — Spring Boot + React + PostgreSQL
 
